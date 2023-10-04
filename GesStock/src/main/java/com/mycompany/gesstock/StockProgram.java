@@ -31,8 +31,7 @@ public class StockProgram
         
         Menu menu = new Menu(lesArticles);
         menu.afficherMenuPrincipal();
-
     }
     
-    
+
 }

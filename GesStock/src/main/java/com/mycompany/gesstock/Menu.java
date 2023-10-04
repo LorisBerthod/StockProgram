@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Menu {
     
     private ArrayList<Article> lesArticles;
-    
+    public Scanner scanner = new Scanner(System.in);
     public Menu (ArrayList<Article> lesArticles)
     {
         this.lesArticles = lesArticles;
@@ -52,7 +52,7 @@ public class Menu {
      */
     public void choisirOption()
     {
-        Scanner scanner = new Scanner(System.in);
+
         
         System.out.println("Donnez votre choix : ");
         int num = scanner.nextInt();
@@ -64,9 +64,9 @@ public class Menu {
             case 1:
                 chercherArticleNum();
                 break;
-//            case 2:
-//                chercherArticleNom();
-//                break;
+            case 2:
+               chercherArticleNom();
+               break;
 //            case 3:
 //                chercherArticlePrix();
 //                break;
@@ -191,6 +191,24 @@ public class Menu {
         for (Article a : lesArticles)
         {
             System.out.println(a.toString());
+        }
+    }
+
+    public void chercherArticleNom(){
+        Article articleChoisi = null;
+        System.out.println("Choisissez votre article : ");
+        Scanner scanner = new Scanner(System.in);
+        String nom = scanner.nextLine();
+
+        for (Article article : lesArticles) {
+            if (article.getNom().equals(nom)) {
+                System.out.println(article.toString());
+                articleChoisi = article;
+                break;
+            }
+        }
+        if (articleChoisi == null) {
+            System.out.println("Aucun article trouvé avec le nom : " + nom);
         }
     }
     
