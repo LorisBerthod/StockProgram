@@ -5,6 +5,7 @@
 package com.mycompany.gesstock;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  *
@@ -52,6 +53,37 @@ public class Menu {
         System.out.println("Donnez votre choix : " + num);
     }
     
+//    public void chercherArticleNom(){
+//        Scanner scanner = new Scanner (System.in);
+// 
+//        System.out.println("Donnez le numéro de l'article à rechercher : ");
+//        String nom = scanner.nextLine();
+//        
+//        
+//
+//        lesArticles.forEach(lesArticles -> System.out.println(nom));
+//}
     
+    public void ajouterArticle(){
+        System.out.println("Donnez le numéro de l'article à ajouter : " + + "donnez le nom : " + se); 
+   }
     
+    public void suppArticleNum(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Donnez le numéro de l'article à supprimer : ");
+        String num = scanner.nextLine(); // NB : On cherche l'article par sa référence.
+        
+        for (int i = 0; i < lesArticles.size(); i++)
+        {
+            if (num.equals(lesArticles.get(i).getReference()))
+            {
+                System.out.println(lesArticles.remove(i));
+            }
+        }
+        
+        System.out.println("Votre article a été supprimé");
+    }
+    public void quitterMenu(){
+        System.exit(0);
+    }
 }
