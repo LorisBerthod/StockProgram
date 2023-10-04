@@ -41,7 +41,7 @@ public class Article {
         this.art_Nom = art_Nom;
     }
     
-    public void setPrix(int art_PrixVente){
+    public void setPrix(float art_PrixVente){
         this.art_PrixVente = art_PrixVente;
     }
     
@@ -51,6 +51,8 @@ public class Article {
     
     @Override
     public String toString(){
-        return "nom de l'article : " + getNom() + "\n" + " prix de l'article : " + getPrixVente() + "\n" + "stock de l'article : " + getStock();
+        return "nom de l'article : " + getNom() + "\n" 
+                + "prix de l'article : " + getPrixVente() + "\n" 
+                + "stock de l'article : " + getStock() + "\n";
     }
 }
