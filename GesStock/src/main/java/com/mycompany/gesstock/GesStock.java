@@ -12,6 +12,6 @@ package com.mycompany.gesstock;
 public class GesStock {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+
     }
 }
