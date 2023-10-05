@@ -64,9 +64,9 @@ public class Menu {
 //        lesArticles.forEach(lesArticles -> System.out.println(nom));
 //}
     
-    public void ajouterArticle(){
-        System.out.println("Donnez le numéro de l'article à ajouter : " + + "donnez le nom : " + se); 
-   }
+//    public void ajouterArticle(){
+//        System.out.println("Donnez le numéro de l'article à ajouter : " + + "donnez le nom : " + se); 
+//   }
     
     public void suppArticleNum(){
         Scanner scanner = new Scanner(System.in);

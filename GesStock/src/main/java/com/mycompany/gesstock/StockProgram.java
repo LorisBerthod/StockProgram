@@ -13,7 +13,6 @@ public class StockProgram
 {
     public static void main(String[] args)
     {
-
         /// Instancier 5 articles
         Article article1 = new Article("art1","Whisky" ,29.99f , 12);
         Article article2 = new Article("art2","Rosé" ,9f , 26);
@@ -30,9 +29,8 @@ public class StockProgram
         lesArticles.add(article4);
         lesArticles.add(article5);
         
-        Menu menu = new Menu();
-        
-        System.out.println(menu.afficherMenuPrincipal());
+        Menu menu = new Menu(lesArticles);
+        menu.afficherMenuPrincipal();
 
     }
     
