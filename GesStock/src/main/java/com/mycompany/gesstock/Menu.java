@@ -16,9 +16,10 @@ import java.util.Scanner;
 public class Menu {
     
     private ArrayList<Article> lesArticles;
-    
-    public Menu ()
+    public Scanner scanner = new Scanner (System.in);
+    public Menu (ArrayList<Article> lesArticles)
     {
+        this.lesArticles = lesArticles;
         lesArticles = new ArrayList<>();
     }
     
