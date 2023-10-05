@@ -33,5 +33,5 @@ public class StockProgram
         menu.afficherMenuPrincipal();
     }
     
-    
+
 }
