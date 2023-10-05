@@ -70,9 +70,9 @@ public class Menu {
 //            case 3:
 //                chercherArticlePrix();
 //                break;
-//            case 4:
-//                ajouterArticle();
-//                break;
+            case 4:
+                ajouterArticle();
+                break;
 //            case 5:
 //                modifArticleNum();
 //                break;
@@ -123,23 +123,6 @@ public class Menu {
     {
         
     }
-    
-//    public void chercherArticleNom(){
-//        Scanner scanner = new Scanner (System.in);
-// 
-//        System.out.println("Donnez le numéro de l'article à rechercher : ");
-//        String nom = scanner.nextLine();
-//        
-//        
-//
-//        lesArticles.forEach(lesArticles -> System.out.println(nom));
-//}
-    
-
-//    public void ajouterArticle(){
-//        System.out.println("Donnez le numéro de l'article à ajouter : " + + "donnez le nom : " + se); 
-//   }
-
     /**
      * Permet de modifier les attributs d'un article à partir de son numéro.
      * @author Thomas
@@ -243,5 +226,28 @@ public class Menu {
     }
     public void quitterMenu(){
         System.exit(0);
+    }
+    
+    public void ajouterArticle(){
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Donnez le numéro de l'article à ajouter : ");
+        String refArticle = scanner.nextLine();
+         
+        
+        System.out.println("Donnez le nom : ");
+        String nomArticle = scanner.nextLine();
+
+
+        System.out.println("Donnez le prix : ");
+        float prixArticle = scanner.nextFloat();
+        
+        System.out.println("Donnez le stock : ");
+        int stockArticle = scanner.nextInt();
+        
+        Article article = new Article(refArticle, nomArticle ,prixArticle ,stockArticle);
+        lesArticles.add(article);
+        System.out.println("Article ajouté avec succès");
+
     }
 }

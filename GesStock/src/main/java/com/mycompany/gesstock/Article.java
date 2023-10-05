@@ -9,7 +9,7 @@ package com.mycompany.gesstock;
  * @author BERTHOD
  */
 public class Article {
-    private final String art_Reference;
+    private  String art_Reference;
     private String art_Nom;
     private float art_PrixVente;
     private int art_Stock;
@@ -47,6 +47,10 @@ public class Article {
     
     public void setStock(int art_Stock){
         this.art_Stock = art_Stock;
+    }
+    
+    public void setReference(String art_Reference){
+        this.art_Reference = art_Reference;
     }
     
     @Override
