@@ -31,7 +31,7 @@ public class Menu {
         System.out.println("""
                 1 - Rechercher un article par numéro
                 2 - Rechercher un article par nom
-                3 - Rechercher un article par intervalle de prix de vente
+                3 - Rechercher un article par prix de vente
                
                 4 - Ajouter un article
                 5 - Modifier un article par numéro
@@ -67,24 +67,24 @@ public class Menu {
             case 2:
                chercherArticleNom();
                break;
-//            case 3:
-//                chercherArticlePrix();
-//                break;
+            case 3:
+                chercherArticlePrix();
+                break;
             case 4:
                 ajouterArticle();
                 break;
-//            case 5:
-//                modifArticleNum();
-//                break;
-//            case 6:
-//                suppArticleNum();
-//                break;
+            case 5:
+                modifArticleNum();
+                break;
+            case 6:
+                suppArticleNum();
+                break;
             case 7:
                 afficherLesArticles();
                 break;
-//            case 8:
-//                quitterMenu();
-//                break;
+            case 8:
+                quitterMenu();
+                break;
             default:
                 throw new AssertionError();
         }
@@ -121,7 +121,21 @@ public class Menu {
      */
     public void chercherArticlePrix()
     {
-        
+        Article articleChoisi = null;
+        System.out.println("Choisissez un prix d'article : ");
+        Scanner scanner = new Scanner(System.in);
+        Float prix = scanner.nextFloat();
+
+        for (Article article : lesArticles) {
+            if (prix.equals(article.getPrixVente())) {
+                System.out.println(article.toString());
+                articleChoisi = article;
+                break;
+            }
+        }
+        if (articleChoisi == null) {
+            System.out.println("Aucun nom d'article trouvé avec le prix : " + prix);
+        }
     }
     /**
      * Permet de modifier les attributs d'un article à partir de son numéro.
