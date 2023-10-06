@@ -77,7 +77,6 @@ public class Menu {
     
     /**
      * Permet de rechercher un article par son numéro/référence.
-     * (( NB : A MODIFIER -> Fix boucle + retour au menu ))
      * @author Thomas
      */
     public void chercherArticleNum()
@@ -104,27 +103,29 @@ public class Menu {
     
     /**
      * Permet de rechercher un article par un intervalle de prix de vente.
-     * (( NB : A MODIFIER -> Ajouter l'intervalle  + retour au menu. ))
      * @author Thomas
      */
     public void chercherArticlePrix()
     {
         Article articleChoisi = null;
         
+        System.out.println("Choisissez un prix minimum d'article : ");
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Choisissez un prix d'article : ");
+        Float prixMin = scanner.nextFloat();
         
-        Float prix = scanner.nextFloat();
+        System.out.println("Choisissez un prix maximum d'article : ");
+        Float prixMax = scanner.nextFloat();
+
 
         for (Article article : lesArticles) {
-            if (prix.equals(article.getPrixVente())) {
+            if (article.getPrixVente()>=prixMin && article.getPrixVente()<=prixMax) {
                 System.out.println(article.toString());
                 articleChoisi = article;
                 break;
             }
         }
         if (articleChoisi == null) {
-            System.out.println("Aucun nom d'article trouvé avec le prix : " + prix);
+            System.out.println("Aucun nom d'article trouvé avec l'intervalle : " + prixMin +" et " + prixMax);
         }
         
         afficherMenuPrincipal();
@@ -278,7 +279,6 @@ public class Menu {
     
     /**
      * Permet d'ajouter un article dans la collection d'articles.
-     * (( NB : A MODIFIER -> Retour au menu ))
      * @author Loris
      */
     public void ajouterArticle(){
