@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class Menu {
     
     private ArrayList<Article> lesArticles;
-    public Scanner scanner = new Scanner(System.in);
+
     public Menu (ArrayList<Article> lesArticles)
     {
         this.lesArticles = lesArticles;
@@ -25,9 +25,12 @@ public class Menu {
     
     /**
      * Affiche dans la console le menu principal avec ses options.
+     * @author Thomas
      */
     public void afficherMenuPrincipal()
     {
+        // Les """ sont des "text blocks".
+        
         System.out.println("""
                 1 - Rechercher un article par numéro
                 2 - Rechercher un article par nom
@@ -49,50 +52,32 @@ public class Menu {
     
     /**
      * Permet de choisir une option dans le menu principal.
+     * @author Thomas
      */
     public void choisirOption()
     {
 
-        
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Donnez votre choix : ");
         int num = scanner.nextInt();
         
         switch (num) {
-            case 0:
-                System.out.println("L'option 0 n'existe pas.");
-                break;
-            case 1:
-                chercherArticleNum();
-                break;
-            case 2:
-               chercherArticleNom();
-               break;
-            case 3:
-                chercherArticlePrix();
-                break;
-            case 4:
-                ajouterArticle();
-                break;
-            case 5:
-                modifArticleNum();
-                break;
-            case 6:
-                suppArticleNum();
-                break;
-            case 7:
-                afficherLesArticles();
-                break;
-            case 8:
-                quitterMenu();
-                break;
-            default:
-                throw new AssertionError();
+            case 1 -> chercherArticleNum();
+            case 2 -> chercherArticleNom();
+            case 3 -> chercherArticlePrix();
+            case 4 -> ajouterArticle();
+            //case 5 -> modifArticleNum();
+            case 6 -> suppArticleNum();
+            case 7 -> afficherLesArticles();
+            case 8 -> quitterMenu();
+            default -> throw new AssertionError();
         }
     }
     
     
     /**
      * Permet de rechercher un article par son numéro/référence.
+     * (( NB : A MODIFIER -> Fix boucle + retour au menu ))
      * @author Thomas
      */
     public void chercherArticleNum()
@@ -112,11 +97,14 @@ public class Menu {
                 System.out.println("L'article que vous cherchez n'existe pas.");
             }
         }
+        
+        afficherMenuPrincipal();
     }
     
     
     /**
      * Permet de rechercher un article par un intervalle de prix de vente.
+     * (( NB : A MODIFIER -> Ajouter l'intervalle  + retour au menu. ))
      * @author Thomas
      */
     public void chercherArticlePrix()
@@ -136,63 +124,66 @@ public class Menu {
         if (articleChoisi == null) {
             System.out.println("Aucun nom d'article trouvé avec le prix : " + prix);
         }
+        
+        afficherMenuPrincipal();
     }
+    
+    
     /**
      * Permet de modifier les attributs d'un article à partir de son numéro.
+     * (( NB : A MODIFIER -> Erreur ? ))
      * @author Thomas
      */
-    public void modifArticleNum()
-    {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Donnez le numéro de l'article à modifier : ");
-        int numArticle = scanner.nextInt();
-        
-        System.out.println("""
-                           << Options >>
-                1 - Modifier le nom
-                2 - Modifier le prix
-                3 - Modifier la quantité
-                4 - Quitter
-               """
-        );
-        
-        System.out.println("");
-        int numOption = scanner.nextInt();
-        
-        switch (numOption) {
-            case 1:
-                // Modifier le nom
-                
-                System.out.println("Entrez le nouveau nom de l'article : ");
-                String nomArticle = scanner.nextLine();
-                lesArticles.get(numArticle).setNom(nomArticle);
-                
-                break;
-            case 2:
-                // Modifier le prix
-                
-                System.out.println("Entrez le nouveau prix de l'article : ");
-                float prixArticle = scanner.nextFloat();
-                lesArticles.get(numArticle).setPrix(prixArticle);
-                
-                break;
-            case 3:
-                // Modifier la quantité
-                
-                System.out.println("Entrez la nouvelle quantité de l'article : ");
-                int stockArticle = scanner.nextInt();
-                lesArticles.get(numArticle).setStock(stockArticle);
-                
-                break;
-            case 4:
-                // Quitter
-                
-                
-                break;
-            default:
-                throw new AssertionError();
-        }
-    }
+//    public void modifArticleNum()
+//    {
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Donnez le numéro de l'article à modifier : ");
+//        String numArticle = scanner.nextLine();
+//
+//        System.out.println("""
+//                           << Options >>
+//                1 - Modifier le nom
+//                2 - Modifier le prix
+//                3 - Modifier la quantité
+//                4 - Quitter
+//               """
+//        );
+//        
+//        int numOption = scanner.nextInt();
+//        
+//        switch (numOption) {
+//            case 1 -> {
+//                // Modifier le nom
+//                
+//                System.out.println("Entrez le nouveau nom de l'article : ");
+//                String nomArticle = scanner.nextLine();
+//                
+//                lesArticles.get(i).setNom(nomArticle);
+//            }
+//            case 2 -> {
+//                // Modifier le prix
+//                
+//                int i = Integer.parseInt(numArticle);
+//                System.out.println("Entrez le nouveau prix de l'article : ");
+//                float prixArticle = scanner.nextFloat();
+//                lesArticles.get(i).setPrix(prixArticle);
+//            }
+//            case 3 -> {
+//                // Modifier la quantité
+//                
+//                int i = Integer.parseInt(numArticle);
+//                System.out.println("Entrez la nouvelle quantité de l'article : ");
+//                int stockArticle = scanner.nextInt();
+//                lesArticles.get(i).setStock(stockArticle);
+//            }
+//            case 4 -> // Quitter
+//                
+//                quitterMenu();
+//            default -> throw new AssertionError();
+//        }
+//        
+//        afficherMenuPrincipal();
+//    }
     
     /**
      * Permet d'afficher tout les articles dans la liste.
@@ -204,8 +195,14 @@ public class Menu {
         {
             System.out.println(a.toString());
         }
+        
+        afficherMenuPrincipal();
     }
-
+    
+    /**
+     * Permet de rechercher un article par son nom.
+     * @author Loris
+     */
     public void chercherArticleNom(){
         Article articleChoisi = null;
         System.out.println("Choisissez votre article : ");
@@ -222,7 +219,15 @@ public class Menu {
         if (articleChoisi == null) {
             System.out.println("Aucun article trouvé avec le nom : " + nom);
         }
+        
+        afficherMenuPrincipal();
     }    
+    
+    /**
+     * Permet de supprimer un article à partir de son numéro.
+     * (( NB : A MODIFIER -> Retour au menu ))
+     * @author Loris
+     */
     public void suppArticleNum(){
         Scanner scanner = new Scanner(System.in);
         System.out.println("Donnez le numéro de l'article à supprimer : ");
@@ -237,11 +242,22 @@ public class Menu {
         }
         
         System.out.println("Votre article a été supprimé");
+        afficherMenuPrincipal();
     }
+    
+    /**
+     * Permet de quitter le menu principal / la console.
+     * @author Loris
+     */
     public void quitterMenu(){
         System.exit(0);
     }
     
+    /**
+     * Permet d'ajouter un article dans la collection d'articles.
+     * (( NB : A MODIFIER -> Retour au menu ))
+     * @author Loris
+     */
     public void ajouterArticle(){
         
         Scanner scanner = new Scanner(System.in);
@@ -261,7 +277,10 @@ public class Menu {
         
         Article article = new Article(refArticle, nomArticle ,prixArticle ,stockArticle);
         lesArticles.add(article);
+        
         System.out.println("Article ajouté avec succès");
+        
+        afficherMenuPrincipal();
 
     }
 }

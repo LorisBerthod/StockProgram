@@ -29,7 +29,10 @@ public class StockProgram
         lesArticles.add(article4);
         lesArticles.add(article5);
         
+        // Ajout du menu principal
         Menu menu = new Menu(lesArticles);
+        
+        // Affichage du menu principal dans la console
         menu.afficherMenuPrincipal();
         
     }
