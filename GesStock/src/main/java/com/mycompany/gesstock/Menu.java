@@ -110,19 +110,22 @@ public class Menu {
     public void chercherArticlePrix()
     {
         Article articleChoisi = null;
-        System.out.println("Choisissez un prix d'article : ");
+        System.out.println("Choisissez un prix minimum d'article : ");
         Scanner scanner = new Scanner(System.in);
-        Float prix = scanner.nextFloat();
+        Float prixMin = scanner.nextFloat();
+        
+        System.out.println("Choisissez un prix maximum d'article : ");
+        Float prixMax = scanner.nextFloat();
 
         for (Article article : lesArticles) {
-            if (prix.equals(article.getPrixVente())) {
+            if (article.getPrixVente()>=prixMin && article.getPrixVente()<=prixMax) {
                 System.out.println(article.toString());
                 articleChoisi = article;
                 break;
             }
         }
         if (articleChoisi == null) {
-            System.out.println("Aucun nom d'article trouvé avec le prix : " + prix);
+            System.out.println("Aucun nom d'article trouvé avec l'intervalle : " + prixMin +" et " + prixMax);
         }
         
         afficherMenuPrincipal();
