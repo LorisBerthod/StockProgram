@@ -66,7 +66,7 @@ public class Menu {
             case 2 -> chercherArticleNom();
             case 3 -> chercherArticlePrix();
             case 4 -> ajouterArticle();
-            //case 5 -> modifArticleNum();
+            case 5 -> modifArticleNum();
             case 6 -> suppArticleNum();
             case 7 -> afficherLesArticles();
             case 8 -> quitterMenu();
@@ -110,8 +110,10 @@ public class Menu {
     public void chercherArticlePrix()
     {
         Article articleChoisi = null;
-        System.out.println("Choisissez un prix d'article : ");
+        
         Scanner scanner = new Scanner(System.in);
+        System.out.println("Choisissez un prix d'article : ");
+        
         Float prix = scanner.nextFloat();
 
         for (Article article : lesArticles) {
@@ -131,59 +133,80 @@ public class Menu {
     
     /**
      * Permet de modifier les attributs d'un article à partir de son numéro.
-     * (( NB : A MODIFIER -> Erreur ? ))
      * @author Thomas
      */
-//    public void modifArticleNum()
-//    {
-//        Scanner scanner = new Scanner(System.in);
-//        System.out.println("Donnez le numéro de l'article à modifier : ");
-//        String numArticle = scanner.nextLine();
-//
-//        System.out.println("""
-//                           << Options >>
-//                1 - Modifier le nom
-//                2 - Modifier le prix
-//                3 - Modifier la quantité
-//                4 - Quitter
-//               """
-//        );
-//        
-//        int numOption = scanner.nextInt();
-//        
-//        switch (numOption) {
-//            case 1 -> {
-//                // Modifier le nom
-//                
-//                System.out.println("Entrez le nouveau nom de l'article : ");
-//                String nomArticle = scanner.nextLine();
-//                
-//                lesArticles.get(i).setNom(nomArticle);
-//            }
-//            case 2 -> {
-//                // Modifier le prix
-//                
-//                int i = Integer.parseInt(numArticle);
-//                System.out.println("Entrez le nouveau prix de l'article : ");
-//                float prixArticle = scanner.nextFloat();
-//                lesArticles.get(i).setPrix(prixArticle);
-//            }
-//            case 3 -> {
-//                // Modifier la quantité
-//                
-//                int i = Integer.parseInt(numArticle);
-//                System.out.println("Entrez la nouvelle quantité de l'article : ");
-//                int stockArticle = scanner.nextInt();
-//                lesArticles.get(i).setStock(stockArticle);
-//            }
-//            case 4 -> // Quitter
-//                
-//                quitterMenu();
-//            default -> throw new AssertionError();
-//        }
-//        
-//        afficherMenuPrincipal();
-//    }
+    
+    public void modifArticleNum()
+    {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Donnez le numéro de l'article à modifier : ");
+        String numArticle = scanner.nextLine();
+
+        System.out.println("""
+                           << Options >>
+                1 - Modifier le nom
+                2 - Modifier le prix
+                3 - Modifier la quantité
+                4 - Quitter
+               """
+        );
+        
+        int numOption = scanner.nextInt();
+        
+        switch (numOption) {
+            case 1 -> {
+                // Modifier le nom
+                
+                System.out.println("Entrez le nouveau nom de l'article : ");
+                String nomArticle = scanner.next();
+                
+                for (int i = 0; i < lesArticles.size(); i++) 
+                {
+                    if (numArticle.equals(lesArticles.get(i).getReference()))
+                    {
+                        lesArticles.get(i).setNom(nomArticle);
+                    }
+                }
+                
+            }
+            case 2 -> {
+                // Modifier le prix
+                
+                System.out.println("Entrez le nouveau prix de l'article : ");
+                float prixArticle = scanner.nextFloat();
+                
+                for (int i = 0; i < lesArticles.size(); i++) 
+                {
+                    if (numArticle.equals(lesArticles.get(i).getReference()))
+                    {
+                        lesArticles.get(i).setPrix(prixArticle);
+                    }
+                }
+            }
+            case 3 -> {
+                // Modifier la quantité
+
+                System.out.println("Entrez la nouvelle quantité de l'article : ");
+                int stockArticle = scanner.nextInt();
+                
+                for (int i = 0; i < lesArticles.size(); i++) 
+                {
+                    if (numArticle.equals(lesArticles.get(i).getReference()))
+                    {
+                        lesArticles.get(i).setStock(stockArticle);
+                    }
+                }
+            }
+            case 4 -> {
+                // Quitter
+                
+                quitterMenu();
+            }
+            default -> throw new AssertionError();
+        }
+        
+        afficherMenuPrincipal();
+    }
     
     /**
      * Permet d'afficher tout les articles dans la liste.
