@@ -121,7 +121,7 @@ public class Menu {
             if (article.getPrixVente()>=prixMin && article.getPrixVente()<=prixMax) {
                 System.out.println(article.toString());
                 articleChoisi = article;
-                break;
+                
             }
         }
         if (articleChoisi == null) {
